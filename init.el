@@ -23,6 +23,9 @@
 (package-initialize)
 
 ;; This is only needed once, near the top of the file
+(unless (package-installed-p 'use-package)
+  (package-install 'use-package))
+
 (eval-when-compile
   ;; Following line is not needed if use-package.el is in ~/.emacs.d
   (add-to-list 'load-path "~/.emacs.d/use-package")
@@ -91,6 +94,10 @@
    ("C-c l"   . counsel-locate))   ; search for files or else using locate
   )
 
+(use-package jedi
+  :ensure t
+  :init (setq jedi:complete-on-dot t))
+
 (use-package elpy
   :ensure t
   :init
@@ -100,7 +107,12 @@
   (yas-minor-mode)
   (jedi:setup))
 
-(projectile-global-mode)
+(use-package projectile
+  :ensure t
+  :config
+  (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
+  (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+  (projectile-mode +1))
 
 (use-package slime
   :ensure t
@@ -174,9 +186,6 @@
 (rename-modeline "js2-mode" js2-mode "JS2")
 (rename-modeline "clojure-mode" clojure-mode "Clj")
 (rename-modeline "python-mode" python-mode "Py")
-
-;; flycheck stuff
-(add-hook 'after-init-hook #'global-flycheck-mode)
 
 ; a fix needed to run ipython4 as a shell inside emacs
 ; link: https://www.reddit.com/r/Python/comments/4w5d4e/psa_ipython_5_will_break_emacs_heres_how_to_fix_it/
