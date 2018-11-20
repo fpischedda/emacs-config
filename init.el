@@ -127,7 +127,7 @@
   (setq org-reveal-root "file:///Users/francescopischedda/reveal.js/"))
 
 ;; run multi-term pressing F1
-(global-set-key [f1] 'multi-term)
+(global-set-key [f1] 'term)
 
 (use-package rainbow-delimiters
   :ensure t
@@ -191,6 +191,12 @@
 ; link: https://www.reddit.com/r/Python/comments/4w5d4e/psa_ipython_5_will_break_emacs_heres_how_to_fix_it/
 (setq python-shell-interpreter "ipython"
   python-shell-interpreter-args "--simple-prompt")
+
+(use-package neotree
+  :ensure t
+  :commands (neotree-toggle)
+  :bind (("M-n" . neotree-toggle))
+)
 
 ;;; .emacs ends here
 (custom-set-variables
