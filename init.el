@@ -15,8 +15,6 @@
 (show-paren-mode 1)
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
-(define-key global-map (kbd "C-c ;") 'iedit-mode)
-
 (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
 (add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/"))
@@ -137,6 +135,9 @@
   :ensure t
   :config (paredit-mode))
 
+(use-package cider
+  :ensure t)
+
 (use-package clojure-mode
   :ensure t
   :init
@@ -149,9 +150,6 @@
   (setq cider-repl-history-file "~/.emacs.d/cider-history")
 ;; Wrap when navigating history.
   (setq cider-repl-wrap-history t)
-  ;;:config
-;; provides minibuffer documentation for the code you're typing into the repl
-  ;;(cider-turn-on-eldoc-mode)
   )
 
 ;; Use clojure mode for other extensions
@@ -167,6 +165,10 @@
 
 (use-package org
   :ensure t)
+
+(use-package ox-reveal
+  :ensure t
+  :init (setq org-reveal-root "file:///~/reveal.js"))
 
 ; ORG mode customizations
 (font-lock-add-keywords 'org-mode
@@ -206,7 +208,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (paredit-mode zenburn-theme web-mode tagedit slime-clj slime rainbow-delimiters pylint projectile powerline-evil ox-reveal org-bullets multi-term magit-popup jedi-direx ivy helm golint go-complete go-autocomplete go git-commit flycheck-pyflakes exec-path-from-shell evil-surround erlang elpy elixir-yasnippets elixir-mix django-mode darkokai-theme cython-mode column-marker column-enforce-mode clojure-mode-extra-font-locking clj-refactor calfw-gcal calfw android-mode alchemist))))
+    (cider paredit-mode zenburn-theme web-mode tagedit slime-clj slime rainbow-delimiters pylint projectile powerline-evil ox-reveal org-bullets multi-term magit-popup jedi-direx ivy helm golint go-complete go-autocomplete go git-commit flycheck-pyflakes exec-path-from-shell evil-surround erlang elpy elixir-yasnippets elixir-mix django-mode darkokai-theme cython-mode column-marker column-enforce-mode clojure-mode-extra-font-locking clj-refactor calfw-gcal calfw android-mode alchemist))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
