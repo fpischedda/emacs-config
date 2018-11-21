@@ -34,6 +34,19 @@
   :ensure t
   :init (load-theme 'zenburn t))
 
+(use-package smartparens
+  :ensure t
+  :diminish smartparens-mode
+  :config
+  (progn
+    (require 'smartparens-config)
+    (smartparens-global-mode 1)))
+
+(use-package rainbow-delimiters
+  :ensure t
+  :defer t
+  :hook (prog-mode . rainbow-delimiters-mode))
+
 (use-package ranger :ensure t
   :commands (ranger)
   :bind (("C-x d" . deer))
