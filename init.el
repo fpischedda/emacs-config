@@ -232,6 +232,12 @@
   :hook (yaml-mode . (lambda () (ansible 1)))
   :commands (ansible))
 
+(use-package dockerfile-mode
+  :ensure t)
+
+(use-package docker-compose-mode
+  :ensure t)
+
 ;;; .emacs ends here
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
