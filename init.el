@@ -76,9 +76,19 @@
   :ensure t
   :config (global-evil-surround-mode 1))
 
+; powerline - now disabled while testing doom-modeline
 (use-package powerline
   :ensure t
   :config (powerline-default-theme))
+
+(use-package all-the-icons
+  :ensure t)
+
+; testing doom-modeline
+(use-package doom-modeline
+      :ensure t
+      :defer t
+      :hook (after-init . doom-modeline-init))
 
 (use-package avy
   :ensure t)
