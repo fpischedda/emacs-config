@@ -69,6 +69,9 @@
   :ensure t
   :config (powerline-default-theme))
 
+(use-package avy
+  :ensure t)
+
 (use-package ivy
   :ensure t
   :diminish (ivy-mode . "") ; does not display ivy in the modeline
@@ -199,6 +202,14 @@
   :commands (neotree-toggle)
   :bind (("M-n" . neotree-toggle))
 )
+
+(use-package yaml-mode
+  :ensure t)
+
+(use-package ansible
+  :ensure t
+  :hook (yaml-mode . (lambda () (ansible 1)))
+  :commands (ansible))
 
 ;;; .emacs ends here
 (custom-set-variables
