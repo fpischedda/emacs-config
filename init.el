@@ -11,6 +11,7 @@
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
+(global-display-line-numbers-mode)
 
 (show-paren-mode 1)
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
@@ -201,7 +202,7 @@
 
 (use-package org-bullets
   :ensure t
-  :config (org-bullets-mode 1))
+  :hook (org-mode . (lambda () (org-bullets-mode 1))))
 
 ; redifine some modeline
 (defmacro rename-modeline (package-name mode new-name)
