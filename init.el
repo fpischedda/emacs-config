@@ -33,6 +33,10 @@
   :ensure t
   :init (load-theme 'zenburn t))
 
+(use-package which-key
+  :ensure t
+  :config (which-key-mode))
+
 (use-package smartparens
   :ensure t
   :diminish smartparens-mode
