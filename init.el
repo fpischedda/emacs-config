@@ -22,8 +22,8 @@
 (package-initialize)
 
 ;; This is only needed once, near the top of the file
-(unless (package-installed-p 'use-package)
-  (package-install 'use-package))
+;; (unless (package-installed-p 'use-package)
+;;   (package-install 'use-package))
 
 (eval-when-compile
   (require 'use-package))
@@ -129,6 +129,10 @@
   :ensure t
   :init
   (setq elpy-rpc-backend "jedi")
+  :bind
+  (("s-." . elpy-goto-definition)
+   ("M-*" . pop-tag-mark)
+   )
   :config
   (elpy-enable)
   (yas-minor-mode)
