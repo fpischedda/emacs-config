@@ -131,7 +131,7 @@
   (setq elpy-rpc-backend "jedi")
   :bind
   (("s-." . elpy-goto-definition)
-   ("M-*" . pop-tag-mark)
+   ("s->" . pop-tag-mark)
    )
   :config
   (elpy-enable)
