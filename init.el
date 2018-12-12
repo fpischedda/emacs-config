@@ -33,9 +33,17 @@
   :ensure t
   :init (load-theme 'zenburn t))
 
+(use-package wakatime-mode
+  :ensure t
+  :init (global-wakatime-mode))
+
 (use-package which-key
   :ensure t
   :config (which-key-mode))
+
+(use-package evil-nerd-commenter
+  :ensure t
+  :config (evilnc-default-hotkeys))
 
 (use-package smartparens
   :ensure t
@@ -129,6 +137,7 @@
   :ensure t
   :init
   (setq elpy-rpc-backend "jedi")
+  (setq python-check-command "flake8")
   :bind
   (("s-." . elpy-goto-definition)
    ("s->" . pop-tag-mark)
@@ -196,6 +205,17 @@
 (use-package clojure-mode-extra-font-locking
   :ensure t)
 
+;; Elixir related pachages
+(use-package elixir-mode
+  :ensure t)
+
+(use-package alchemist
+  :ensure t)
+
+(use-package flycheck-mix
+  :ensure t)
+
+;; org mode
 (use-package org
   :ensure t)
 
